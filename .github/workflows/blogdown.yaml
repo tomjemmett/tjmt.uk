@@ -30,6 +30,10 @@ jobs:
         run: |
           R -e 'blogdown::build_site(TRUE)'
 
+      - name: Add CNAME fail
+        run: |
+          echo "tjmt.uk" > public/CNAME
+
       - name: Deploy to GitHub pages 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:

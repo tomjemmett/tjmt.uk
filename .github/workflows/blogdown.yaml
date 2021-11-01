@@ -30,7 +30,7 @@ jobs:
         run: |
           R -e 'blogdown::build_site(TRUE)'
 
-      - name: Add CNAME fail
+      - name: Add CNAME file
         run: |
           echo "tjmt.uk" > public/CNAME
 

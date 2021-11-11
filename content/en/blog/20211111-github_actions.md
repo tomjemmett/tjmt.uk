@@ -14,7 +14,7 @@ Below is an example of an action that I created for my [talks](https://github.co
 
 Hopefully the explanation can be of use to you in creating your own actions! One thing that isn't mentioned below is
 this was a bit of a painful process to create, with many, many failures along the way. Creating GitHub actions can be a
-painful process if you do encounter build failures, but persistance does pay off!
+painful process if you do encounter build failures, but persistence does pay off!
 
 ### full yaml file
 

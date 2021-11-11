@@ -6,11 +6,11 @@
     <description>Recent content in GitHub Actions on Introduction</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 11 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://tjmt.uk/tags/github-actions/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Nov 2021 15:00:00 +0000</lastBuildDate><atom:link href="https://tjmt.uk/tags/github-actions/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitHub Actions for R</title>
       <link>https://tjmt.uk/blog/20211111-github_actions/</link>
-      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 11 Nov 2021 15:00:00 +0000</pubDate>
       
       <guid>https://tjmt.uk/blog/20211111-github_actions/</guid>
       <description>GitHub Actions is a super useful way to automate some of the boring tasks that we have to do day in, day out. And the wonderful r-lib have created a bunch of actions for R that will make your life super easy. Along with the {usethis} package, and the function usethis::use_github_action(), you can easily set up a bunch of predefined actions.

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Website Description">
+<title>
+Git Hub Actions for R - Introduction
+</title>
+
+
+
+        
+        <meta property="og:title" content="GitHub Actions for R - Introduction" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Website Description"/>
+<meta property="og:url" content="https://tjmt.uk/blog/20211111-github_actions/"/>
+<meta property="og:site_name" content="Introduction"/>
+
+
+
+
+<meta property="og:image" content="https://tjmt.uk/home/profile.jpg"/>
+
+
+
+
+        
+<link rel="shortcut icon" href="/img/fav.ico">
+
+
+        
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.3679995ba0ed4b91edeef430fd34cce1e8b53c123f9993c4861941eee80b46b1.css" integrity="sha256-NnmZW6DtS5Ht7vQw/TTM4ei1PBI/mZPEhhlB7ugLRrE=" crossorigin="anonymous" media="screen">
+
+
+
+
+
+        
+        
+        
+        
+    </head>
+    <body>
+        <section id="top" class="section">
+            
+            <div class="container hero  fade-in one ">
+                
+
+<h1 class="bold-title is-1">Blog</h1>
+
+
+            </div>
+            
+            <div class="section  fade-in two ">
+                
+<div class="container">
+    <hr>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="navbar-menu " id="navMenu">
+            
+            
+            
+            
+            <a class="navbar-item" href="/">main</a>
+            
+
+            
+            
+
+            
+                
+            
+
+            
+                
+            
+
+            
+            
+            
+            
+            
+            <a class="navbar-item" href="/#about">About</a>
+            
+            
+            
+            
+            
+                
+                
+                
+                
+                  <a class="navbar-item" href="https://tjmt.uk/projects/">
+                  
+                  
+                  Projects
+                  
+                  
+                  </a>
+                
+                
+            
+            
+            
+            
+            
+                
+                
+                
+                
+                  <a class="navbar-item" href="https://tjmt.uk/blog/">
+                  
+                  Back to Blog
+                  
+                  </a>
+                
+                
+            
+            
+            
+            
+
+            
+            
+            <a class="navbar-item" href="/#contact">Contact</a>
+            
+            
+
+            
+
+            
+            
+        </div>
+    </nav>
+    <hr>
+</div>
+
+
+
+                
+<div class="container">
+    <h2 class="title is-1 top-pad strong-post-title">
+        <a href="https://tjmt.uk/blog/20211111-github_actions/">GitHub Actions for R</a>
+    </h2>
+    <div class="post-data">
+        111111-11-11 |
+        3 minutes read
+    </div>
+    
+    <div class="blog-share">
+        Share this:
+        
+        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=GitHub%20Actions%20for%20R%20https%3a%2f%2ftjmt.uk%2fblog%2f20211111-github_actions%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fab fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+        
+        
+        
+    </div>
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+      
+     <p>
+         Tags: 
+          
+           <a href="/tags/r">
+             R</a>,
+         
+           <a href="/tags/github">
+             GitHub</a>,
+         
+           <a href="/tags/github-actions">
+             GitHub Actions</a>
+         
+        </p>
+      
+    
+      
+    
+</div>
+
+<div class="container markdown top-pad">
+    <p><a href="https://github.com/features/actions">GitHub Actions</a> is a super useful way to automate some of the boring tasks that
+we have to do day in, day out. And the wonderful <a href="https://github.com/r-lib">r-lib</a> have created a bunch of actions for
+R that will make your life super easy. Along with the <code>{usethis}</code> package, and the function
+<code>usethis::use_github_action()</code>, you can easily set up a bunch of
+<a href="https://github.com/r-lib/actions/tree/master/examples">predefined actions</a>.</p>
+<p>Below is an example of an action that I created for my <a href="https://github.com/tomjemmett/talks">talks</a> repository recently.</p>
+<p>Hopefully the explanation can be of use to you in creating your own actions! One thing that isn&rsquo;t mentioned below is
+this was a bit of a painful process to create, with many, many failures along the way. Creating GitHub actions can be a
+painful process if you do encounter build failures, but persistance does pay off!</p>
+
+<h3 id="full-yaml-file" class="anchor-link"><a href="#full-yaml-file">full yaml file</a></h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#062873;font-weight:bold">on</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">push</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#062873;font-weight:bold">branches</span>:<span style="color:#bbb"> </span>[main, master]<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#062873;font-weight:bold">tags</span>:<span style="color:#bbb"> </span>[<span style="color:#4070a0">&#39;*&#39;</span>]<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#062873;font-weight:bold">name</span>:<span style="color:#bbb"> </span><span style="color:#4070a0">&#34;Build Slides&#34;</span><span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#062873;font-weight:bold">jobs</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">build_slides</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#062873;font-weight:bold">runs-on</span>:<span style="color:#bbb"> </span>ubuntu-latest<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#062873;font-weight:bold">env</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#062873;font-weight:bold">GITHUB_PAT</span>:<span style="color:#bbb"> </span>${{ secrets.GITHUB_TOKEN }}<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#062873;font-weight:bold">steps</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- <span style="color:#062873;font-weight:bold">uses</span>:<span style="color:#bbb"> </span>actions/checkout@v2<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- <span style="color:#062873;font-weight:bold">name</span>:<span style="color:#bbb"> </span>install libcurl<span style="color:#bbb">
+</span><span style="color:#bbb">        </span><span style="color:#062873;font-weight:bold">run</span>:<span style="color:#bbb"> </span>|<span style="color:#4070a0;font-style:italic">
+</span><span style="color:#4070a0;font-style:italic">          sudo apt install -y libcurl4-openssl-dev
+</span><span style="color:#4070a0;font-style:italic">          </span><span style="color:#bbb">          
+</span><span style="color:#bbb">      </span>- <span style="color:#062873;font-weight:bold">uses</span>:<span style="color:#bbb"> </span>r-lib/actions/setup-pandoc@v1<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- <span style="color:#062873;font-weight:bold">uses</span>:<span style="color:#bbb"> </span>r-lib/actions/setup-r@v1<span style="color:#bbb">
+</span><span style="color:#bbb">        </span><span style="color:#062873;font-weight:bold">with</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">          </span><span style="color:#062873;font-weight:bold">use-public-rspm</span>:<span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">true</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- <span style="color:#062873;font-weight:bold">uses</span>:<span style="color:#bbb"> </span>r-lib/actions/setup-renv@v1<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- <span style="color:#062873;font-weight:bold">name</span>:<span style="color:#bbb"> </span>Cache icons<span style="color:#bbb">
+</span><span style="color:#bbb">        </span><span style="color:#062873;font-weight:bold">uses</span>:<span style="color:#bbb"> </span>actions/cache@v2<span style="color:#bbb">
+</span><span style="color:#bbb">        </span><span style="color:#062873;font-weight:bold">with</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">          </span><span style="color:#062873;font-weight:bold">path</span>:<span style="color:#bbb"> </span>icons<span style="color:#bbb">
+</span><span style="color:#bbb">          </span><span style="color:#062873;font-weight:bold">key</span>:<span style="color:#bbb"> </span>${{ runner.os }}-${{ hashFiles(&#39;get_icons.R&#39;) }}<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- <span style="color:#062873;font-weight:bold">name</span>:<span style="color:#bbb"> </span>Get icons<span style="color:#bbb">
+</span><span style="color:#bbb">        </span><span style="color:#062873;font-weight:bold">run</span>:<span style="color:#bbb"> </span>Rscript get_icons.R<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- <span style="color:#062873;font-weight:bold">name</span>:<span style="color:#bbb"> </span>Build slides<span style="color:#bbb">
+</span><span style="color:#bbb">        </span><span style="color:#062873;font-weight:bold">run</span>:<span style="color:#bbb"> </span>Rscript .github/workflows/build_slides.R<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">      </span>- <span style="color:#062873;font-weight:bold">name</span>:<span style="color:#bbb"> </span>Deploy 🚀<span style="color:#bbb">
+</span><span style="color:#bbb">        </span><span style="color:#062873;font-weight:bold">uses</span>:<span style="color:#bbb"> </span>JamesIves/github-pages-deploy-action@4.1.5<span style="color:#bbb">
+</span><span style="color:#bbb">        </span><span style="color:#062873;font-weight:bold">with</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">          </span><span style="color:#062873;font-weight:bold">branch</span>:<span style="color:#bbb"> </span>gh-pages<span style="color:#bbb">
+</span><span style="color:#bbb">          </span><span style="color:#062873;font-weight:bold">folder</span>:<span style="color:#bbb"> </span>public<span style="color:#bbb">
+</span></code></pre></div>
+<h2 id="how-it-works" class="anchor-link"><a href="#how-it-works">how it works</a></h2>
+<p>This can be broken down into a few steps:</p>
+
+<h3 id="checkout-the-branch" class="anchor-link"><a href="#checkout-the-branch">checkout the branch</a></h3>
+<p>Pretty much all actions will start out with</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#062873;font-weight:bold">uses</span>:<span style="color:#bbb"> </span>actions/checkout@v2<span style="color:#bbb">
+</span></code></pre></div><p>This will simply checkout the branch that triggered this action into the current folder.</p>
+
+<h3 id="install-system-dependencies" class="anchor-link"><a href="#install-system-dependencies">install system dependencies</a></h3>
+<p>I got caught out at a later step because <code>libcurl</code> wasn&rsquo;t installed, so I simply install this in Ubuntu with</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#062873;font-weight:bold">name</span>:<span style="color:#bbb"> </span>install libcurl<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">run</span>:<span style="color:#bbb"> </span>|<span style="color:#4070a0;font-style:italic">
+</span><span style="color:#4070a0;font-style:italic">    </span><span style="color:#bbb">    </span>sudo apt install -y libcurl4-openssl-dev<span style="color:#bbb">
+</span></code></pre></div><p>This step may not be necessary in all of your actions, but if you get issues when installing R packages you may need
+to run a step like this. Some of the r-lib actions will sort out system dependencies for you, I didn&rsquo;t take this
+approach though as I was using <code>{renv}</code> and I&rsquo;m not too sure yet how to get the system dependencies using this.</p>
+
+<h3 id="setting-up-r" class="anchor-link"><a href="#setting-up-r">setting up R</a></h3>
+<p>The next chunk does 3 things:</p>
+<ol>
+<li>it installs pandoc (used by <code>{rmarkdown}</code> for converting from markdown to html and other formats)</li>
+<li>it installs R, and set&rsquo;s it to use the public <a href="https://packagemanager.rstudio.com/client/">RStudio Package Manager</a>
+(this will make installing packages on Linux much, much quicker)</li>
+<li>it installs the <code>{renv}</code> package, then uses that to install all of the packages you need for your project.
+Additionally it caches the package library. Next time the action runs, if the <code>renv.lock</code> file hasn&rsquo;t changed then it
+will just reload the installed packages from the cache.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#bbb">  </span>- <span style="color:#062873;font-weight:bold">uses</span>:<span style="color:#bbb"> </span>r-lib/actions/setup-pandoc@v1<span style="color:#bbb">
+</span><span style="color:#bbb">  </span>- <span style="color:#062873;font-weight:bold">uses</span>:<span style="color:#bbb"> </span>r-lib/actions/setup-r@v1<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#062873;font-weight:bold">with</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">      </span><span style="color:#062873;font-weight:bold">use-public-rspm</span>:<span style="color:#bbb"> </span><span style="color:#007020;font-weight:bold">true</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span>- <span style="color:#062873;font-weight:bold">uses</span>:<span style="color:#bbb"> </span>r-lib/actions/setup-renv@v1<span style="color:#bbb">
+</span></code></pre></div><p>If you haven&rsquo;t used <a href="https://github.com/rstudio/renv"><code>{renv}</code></a> before it&rsquo;s well worth checking out, it makes life
+significantly easier for GitHub actions as it will keep a track of all the packages that you need to run, and then
+adding in the one step automatically configures the remote environment like your own.</p>
+
+<h3 id="my-stuff" class="anchor-link"><a href="#my-stuff">my stuff</a></h3>
+<p>The next chunk is some stuff I created. Specifically, I have two scripts that I want to run:</p>
+<ul>
+<li><code>get_icons.R</code></li>
+<li><code>.github/workflows/build_slides.R</code></li>
+</ul>
+<p>The <a href="https://github.com/mitchelloharawild/icons"><code>{icons}</code></a> package is a great way to include svg icons in your
+Rmarkdown reports. I use it to insert nice twitter/github etc. logo&rsquo;s into my about me slides. However, you need to
+run the <code>download_*()</code> functions in order to get the icons to work. The <code>get_icons.R</code> script does this for me, but I
+don&rsquo;t want to always re-run the entire download, so I cache the folder that I download the icons to.</p>
+<p>The <code>build_slides.R</code> file simply looks for any <code>.Rmd</code> files in the folder, renders them, then keeps just the files that
+are needed for the deployment (e.g. the <code>.html</code> files and the <code>css</code>/<code>img</code>/<code>libs</code> folders).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#062873;font-weight:bold">name</span>:<span style="color:#bbb"> </span>Cache icons<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">uses</span>:<span style="color:#bbb"> </span>actions/cache@v2<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">with</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#062873;font-weight:bold">path</span>:<span style="color:#bbb"> </span>icons<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#062873;font-weight:bold">key</span>:<span style="color:#bbb"> </span>${{ runner.os }}-${{ hashFiles(&#39;get_icons.R&#39;) }}<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>- <span style="color:#062873;font-weight:bold">name</span>:<span style="color:#bbb"> </span>Get icons<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">run</span>:<span style="color:#bbb"> </span>Rscript get_icons.R<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>- <span style="color:#062873;font-weight:bold">name</span>:<span style="color:#bbb"> </span>Build slides<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#062873;font-weight:bold">run</span>:<span style="color:#bbb"> </span>Rscript .github/workflows/build_slides.R<span style="color:#bbb">
+</span></code></pre></div>
+<h3 id="deploy-to-gh-pages" class="anchor-link"><a href="#deploy-to-gh-pages">deploy to gh-pages</a></h3>
+<p>The final chunk handles deploying the pages to GitHub pages. You simply say which branch you want to deploy to, and the
+folder that it should deploy. I render my files to the folder <code>&quot;public&quot;</code>, so that is what I deploy.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#062873;font-weight:bold">name</span>:<span style="color:#bbb"> </span>Deploy 🚀<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">uses</span>:<span style="color:#bbb"> </span>JamesIves/github-pages-deploy-action@4.1.5<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#062873;font-weight:bold">with</span>:<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#062873;font-weight:bold">branch</span>:<span style="color:#bbb"> </span>gh-pages<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#062873;font-weight:bold">folder</span>:<span style="color:#bbb"> </span>public<span style="color:#bbb">
+</span></code></pre></div>
+</div>
+
+
+
+
+
+                
+                <div class="container">
+    <hr>
+</div>
+<div class="container has-text-centered top-pad">
+    <a href="#top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+</div>
+
+<div class="container">
+    <hr>
+</div>
+
+                <div class="section" id="footer">
+    <div class="container has-text-centered">
+    
+        <span class="footer-text">
+            <a href="https://github.com/victoriadrake/hugo-theme-introduction/"><strong>Introduction</strong></a> theme for <a href="http://gohugo.io/">Hugo</a>. Made with <a href="https://victoria.dev"><i class="fa fa-heart"></i> and <i class="fa fa-coffee"></i></a> by open source contributors.
+        </span>
+    
+    </div>
+</div>
+
+                
+            </div>
+        </section>
+        
+        
+
+
+<script src="https://tjmt.uk/js/bundle.f1741e9868b2f697e71cf8fccfcc12166540999b3d36f8fb9edd0882ba425d55.js" integrity="sha256-8XQemGiy9pfnHPj8z8wSFmVAmZs9Nvj7nt0IgrpCXVU="></script>
+
+
+
+
+
+
+        
+        
+        
+        
+    </body>
+</html>

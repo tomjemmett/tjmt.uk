@@ -1,6 +1,6 @@
 ---
 title: "GitHub Actions for R"
-date: 2021-11-11
+date: "2021-11-11"
 tags: ["R", "GitHub", "GitHub Actions"]
 ---
 

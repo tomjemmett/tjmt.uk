@@ -18,6 +18,16 @@ The code is released under an MIT license and is available on the SU GitHub, and
     </item>
     
     <item>
+      <title>NHS-R Conference 2021</title>
+      <link>https://tjmt.uk/projects/nhsr_conf21/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://tjmt.uk/projects/nhsr_conf21/</guid>
+      <description>For the 2021 NHS-R conference I delivered a workshop on functional programming (slides, video) and a lightning talk on Object Orientated Programming in R using S3 (slides, video).
+I also had the pleasure of helping out in two other workshops: &amp;ldquo;Reproducible computation at scale in R with {targets}&amp;rdquo; by Will Landau and an introduction to &amp;ldquo;Artificial Neural Networks in R with Keras and TensorFlow&amp;rdquo; by Leon Eyrich Jessen. Both of these sessions were fantastically informative and delivered expertly.</description>
+    </item>
+    
+    <item>
       <title>{NHSRplotthedots}</title>
       <link>https://tjmt.uk/projects/nhsr_ptd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

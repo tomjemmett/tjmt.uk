@@ -13,35 +13,26 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: recursive
 
-      - name: submodule update
-        run: |
-          git submodule init
-          git submodule update
+      - uses: tomjemmett/renv-install-system-deps@v1
 
       - uses: r-lib/actions/setup-pandoc@v1
-
       - uses: r-lib/actions/setup-r@v1
-        with:
-          use-public-rspm: true
-
       - uses: r-lib/actions/setup-renv@v1
 
       - name: Install hugo
-        run: |
-          R -e 'blogdown::install_hugo(getOption("blogdown.hugo.version", "latest"))'
+        run: R -e 'blogdown::install_hugo(getOption("blogdown.hugo.version", "latest"))'
 
       - name: Install npm dependencies
-        run: |
-          npm install
+        run: npm install
 
       - name: Build site
-        run: |
-          R -e 'blogdown::build_site(TRUE)'
+        run: R -e 'blogdown::build_site(TRUE)'
 
       - name: Add CNAME file
-        run: |
-          echo "tjmt.uk" > public/CNAME
+        run: echo "tjmt.uk" > public/CNAME
 
       - name: Deploy to GitHub pages 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4

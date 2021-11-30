@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SQL on Introduction</title>
+    <link>https://tjmt.uk/tags/sql/</link>
+    <description>Recent content in SQL on Introduction</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Tue, 30 Nov 2021 10:00:00 +0000</lastBuildDate><atom:link href="https://tjmt.uk/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why we should use UUIDs for all primary keys</title>
+      <link>https://tjmt.uk/blog/20211130-uuid_primary_keys/</link>
+      <pubDate>Tue, 30 Nov 2021 10:00:00 +0000</pubDate>
+      
+      <guid>https://tjmt.uk/blog/20211130-uuid_primary_keys/</guid>
+      <description>Recently I&amp;rsquo;ve been working with HES data on a project, and the current structure of tables we have is for each of the different datasets (Inpatients, Outpatients, Emeregency Care, etc.) we have a separate table for each financial year. Within these there will be a column like EPIKEY or ATTENDKEY which is the primary key in that table. This key is stored as a BIGINT.
+This key restarts counting each year&amp;hellip; well, sort of.</description>
+    </item>
+    
+  </channel>
+</rss>

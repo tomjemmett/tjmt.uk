@@ -11,7 +11,19 @@
     <loc>https://tjmt.uk/projects/</loc>
   </url><url>
     <loc>https://tjmt.uk/blog/</loc>
-    <lastmod>2021-11-11T15:00:00+00:00</lastmod>
+    <lastmod>2021-11-30T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tjmt.uk/</loc>
+    <lastmod>2021-11-30T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tjmt.uk/tags/sql/</loc>
+    <lastmod>2021-11-30T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tjmt.uk/tags/</loc>
+    <lastmod>2021-11-30T10:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tjmt.uk/blog/20211130-uuid_primary_keys/</loc>
+    <lastmod>2021-11-30T10:00:00+00:00</lastmod>
   </url><url>
     <loc>https://tjmt.uk/tags/github/</loc>
     <lastmod>2021-11-11T15:00:00+00:00</lastmod>
@@ -22,13 +34,7 @@
     <loc>https://tjmt.uk/blog/20211111-github_actions/</loc>
     <lastmod>2021-11-11T15:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://tjmt.uk/</loc>
-    <lastmod>2021-11-11T15:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://tjmt.uk/tags/r/</loc>
-    <lastmod>2021-11-11T15:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://tjmt.uk/tags/</loc>
     <lastmod>2021-11-11T15:00:00+00:00</lastmod>
   </url><url>
     <loc>https://tjmt.uk/series/</loc>

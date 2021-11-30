@@ -2,7 +2,7 @@
 <html lang="en-gb">
 
     <head>
-	<meta name="generator" content="Hugo 0.89.2" />
+	<meta name="generator" content="Hugo 0.89.4" />
         <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <meta name="HandheldFriendly" content="True">
@@ -535,13 +535,13 @@ goal was to replicate the functionality provided in their excel tool.</p>
         
         <h2 class="title is-2 has-text-centered">Latest Post</h2>
             
-            <div class="summary">2021-11-11
-                <h3 class="title is-3 latest-post-title"><a href="https://tjmt.uk/blog/20211111-github_actions/">GitHub Actions for R</a></h3>
+            <div class="summary">2021-11-30
+                <h3 class="title is-3 latest-post-title"><a href="https://tjmt.uk/blog/20211130-uuid_primary_keys/">Why we should use UUIDs for all primary keys</a></h3>
                     <div class="markdown">
-                    GitHub Actions is a super useful way to automate some of the boring tasks that we have to do day in, day out. And the wonderful r-lib have created a bunch of actions for R that will make your life super easy. Along with the {usethis} package, and the function usethis::use_github_action(), you can easily set up a bunch of predefined actions.
-Below is an example of an action that I created for my talks repository recently.
+                    Recently I&rsquo;ve been working with HES data on a project, and the current structure of tables we have is for each of the different datasets (Inpatients, Outpatients, Emeregency Care, etc.) we have a separate table for each financial year. Within these there will be a column like EPIKEY or ATTENDKEY which is the primary key in that table. This key is stored as a BIGINT.
+This key restarts counting each year&hellip; well, sort of.
                     
-                    <a href="https://tjmt.uk/blog/20211111-github_actions/">Read more</a>
+                    <a href="https://tjmt.uk/blog/20211130-uuid_primary_keys/">Read more</a>
                     
                     </div>
             </div>
